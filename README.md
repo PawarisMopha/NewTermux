@@ -1,4 +1,6 @@
 # NewTermux
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/n8S4G2WZQ4)
+
 
 A personal fork of Termux with a modernized UI and extended feature set. Installs as `com.termux` — a drop-in replacement.
 
@@ -363,3 +365,8 @@ Commit messages **must** use the [Conventional Commits](https://www.conventional
 
 ---
 <sub>☕ [Support on Ko-fi](https://ko-fi.com/the412banner)</sub>
+
+
+## Community
+
+Join our Discord: https://discord.gg/n8S4G2WZQ4
