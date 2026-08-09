@@ -52,7 +52,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.newtermux.compose.MenuItemDivider
 import com.newtermux.compose.NewTermuxComposeTheme
+import com.newtermux.compose.outlinedMenuCard
 import com.newtermux.features.NewTermuxSettings
 import com.newtermux.features.TextExpansionStore
 import com.termux.app.TermuxActivity
@@ -204,8 +206,9 @@ private fun LogLevelRow(context: Context, current: Int, onSelect: (Int) -> Unit)
     val idx = values.indexOf(value.toString()).coerceAtLeast(0)
     Box {
         NavRow(title = "Log level", summary = labels.getOrNull(idx)) { expanded = true }
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }, modifier = Modifier.outlinedMenuCard()) {
             values.forEachIndexed { i, v ->
+                if (i > 0) MenuItemDivider()
                 DropdownMenuItem(text = { Text(labels.getOrElse(i) { v }) }, onClick = {
                     expanded = false
                     v.toIntOrNull()?.let { lvl ->

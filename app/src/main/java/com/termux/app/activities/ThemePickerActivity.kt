@@ -61,7 +61,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.newtermux.compose.MenuItemDivider
 import com.newtermux.compose.NewTermuxComposeTheme
+import com.newtermux.compose.outlinedMenuCard
 import com.newtermux.features.ColorPickerDialog
 import com.newtermux.features.NewTermuxColorTheme
 import com.newtermux.features.NewTermuxTheme
@@ -116,7 +118,7 @@ private fun ThemePickerScreen(onBack: () -> Unit) {
                     IconButton(onClick = { overflowOpen = true }) {
                         Icon(Icons.Filled.MoreVert, contentDescription = "More")
                     }
-                    DropdownMenu(expanded = overflowOpen, onDismissRequest = { overflowOpen = false }) {
+                    DropdownMenu(expanded = overflowOpen, onDismissRequest = { overflowOpen = false }, modifier = Modifier.outlinedMenuCard()) {
                         DropdownMenuItem(text = { Text("Custom Theme") }, onClick = { overflowOpen = false; showScope = true })
                     }
                 },
@@ -191,6 +193,7 @@ private fun ThemePickerScreen(onBack: () -> Unit) {
                         text = { Text("Core 3  (Background, Foreground, Cursor)") },
                         onClick = { showScope = false; editorKeys = CORE_KEYS },
                     )
+                    MenuItemDivider()
                     DropdownMenuItem(
                         text = { Text("All 18 terminal colors") },
                         onClick = { showScope = false; editorKeys = ALL_KEYS },

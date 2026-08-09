@@ -942,21 +942,19 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
     }
 
     private void showSessionPopupMenu(View anchor, TerminalSession session) {
-        android.widget.PopupMenu popup = new android.widget.PopupMenu(this, anchor);
-        popup.getMenu().add(0, 1, 0, "Rename");
-        popup.getMenu().add(0, 2, 1, "Close");
-        popup.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == 1) {
-                if (mTermuxTerminalSessionActivityClient != null)
-                    mTermuxTerminalSessionActivityClient.renameSession(session);
-            } else if (item.getItemId() == 2) {
-                session.finishIfRunning();
-                if (mTermuxTerminalSessionActivityClient != null)
-                    mTermuxTerminalSessionActivityClient.removeFinishedSession(session);
-            }
-            return true;
-        });
-        popup.show();
+        // Bannerlator-style pop-out menu: rounded + outlined card with a thin gray divider
+        // between options (see NtPopupMenu).
+        com.newtermux.features.NtPopupMenu.showAsDropDown(this, anchor, null,
+            new String[]{"Rename", "Close"}, idx -> {
+                if (idx == 0) {
+                    if (mTermuxTerminalSessionActivityClient != null)
+                        mTermuxTerminalSessionActivityClient.renameSession(session);
+                } else {
+                    session.finishIfRunning();
+                    if (mTermuxTerminalSessionActivityClient != null)
+                        mTermuxTerminalSessionActivityClient.removeFinishedSession(session);
+                }
+            });
     }
 
     /**

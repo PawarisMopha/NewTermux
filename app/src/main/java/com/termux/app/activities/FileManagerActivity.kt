@@ -50,7 +50,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
+import com.newtermux.compose.MenuItemDivider
 import com.newtermux.compose.NewTermuxComposeTheme
+import com.newtermux.compose.outlinedMenuCard
 import com.termux.shared.termux.TermuxConstants
 import java.io.File
 
@@ -123,8 +125,9 @@ private fun FileManagerScreen(onExit: () -> Unit) {
                     IconButton(onClick = { overflowOpen = true }) {
                         Icon(Icons.Filled.MoreVert, contentDescription = "More")
                     }
-                    DropdownMenu(expanded = overflowOpen, onDismissRequest = { overflowOpen = false }) {
+                    DropdownMenu(expanded = overflowOpen, onDismissRequest = { overflowOpen = false }, modifier = Modifier.outlinedMenuCard()) {
                         DropdownMenuItem(text = { Text("New File") }, onClick = { overflowOpen = false; newFileDialog = true })
+                        MenuItemDivider()
                         DropdownMenuItem(text = { Text("New Folder") }, onClick = { overflowOpen = false; newFolderDialog = true })
                     }
                 },
@@ -196,7 +199,8 @@ private fun FileManagerScreen(onExit: () -> Unit) {
             title = { Text(file.name, maxLines = 1, overflow = TextOverflow.Ellipsis) },
             text = {
                 Column {
-                    actions.forEach { action ->
+                    actions.forEachIndexed { i, action ->
+                        if (i > 0) MenuItemDivider()
                         DropdownMenuItem(text = { Text(action) }, onClick = {
                             optionsFile = null
                             when (action) {
