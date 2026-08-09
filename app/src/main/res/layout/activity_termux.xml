@@ -44,7 +44,7 @@
                 android:descendantFocusability="blocksDescendants"
                 android:orientation="vertical"
                 android:padding="12dp"
-                android:background="?attr/termuxActivityDrawerBackground">
+                android:background="@drawable/bg_drawer">
 
                 <!-- Dynamic command buttons (populated in code) -->
                 <LinearLayout

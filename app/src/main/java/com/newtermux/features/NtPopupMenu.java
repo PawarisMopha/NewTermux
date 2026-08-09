@@ -69,7 +69,7 @@ public final class NtPopupMenu {
             row.setText(items[i]);
             row.setTextColor(ContextCompat.getColor(ctx, R.color.nt_on_surface));
             row.setTextSize(16f);
-            row.setPadding(padH, padV, padH * 2, padV);
+            row.setPadding(padH, padV, padH, padV);
             final int idx = i;
             row.setOnClickListener(v -> {
                 popup.dismiss();
@@ -77,6 +77,17 @@ public final class NtPopupMenu {
             });
             container.addView(row);
         }
+
+        // Size the popup to its content (short labels shouldn't produce a wide menu).
+        // Measure with an UNSPECIFIED width so the MATCH_PARENT dividers don't force full width.
+        container.measure(
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        int width = container.getMeasuredWidth();
+        int min = (int) (140 * d);
+        int max = (int) (320 * d);
+        popup.setWidth(Math.max(min, Math.min(max, width)));
+        popup.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         return popup;
     }
 
