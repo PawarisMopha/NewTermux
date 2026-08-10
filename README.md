@@ -5,9 +5,9 @@
 [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE.md)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/n8S4G2WZQ4)
 
-A personal fork of [Termux](https://termux.dev) with a modernized Material 3 interface and an extended feature set — accent theming, terminal color themes, and built-in package, file and SSH managers. It installs under the `com.termux` package, so it's a **drop-in replacement** for stock Termux and stays fully compatible with the entire [Termux package ecosystem](https://github.com/termux/termux-packages).
+A personal fork of [Termux](https://termux.dev) with a modernized **Jetpack Compose** interface and an extended feature set — accent theming, terminal color themes, and built-in package, file and SSH managers. It installs under the `com.termux` package, so it's a **drop-in replacement** for stock Termux and stays fully compatible with the entire [Termux package ecosystem](https://github.com/termux/termux-packages).
 
-> **Latest stable:** `v1.5.5` — [**Download the APK →**](https://github.com/The412Banner/NewTermux/releases/latest)
+> **Latest stable:** `v1.6.0` — [**Download the APK →**](https://github.com/The412Banner/NewTermux/releases/latest)
 
 ---
 
@@ -29,7 +29,8 @@ A personal fork of [Termux](https://termux.dev) with a modernized Material 3 int
 - Always-visible **session tabs**: one-tap `×` to close, long-press to rename.
 
 ### Modern UI & theming
-- Clean **Material 3 dark** interface.
+- Clean **Material 3 dark** interface, built in **Jetpack Compose** (v1.6.0).
+- Consistent rounded, outlined pop-out menus and drawers throughout.
 - **9 accent presets** plus a fully custom accent via an HSV color wheel or RGB sliders.
 - **13 built-in terminal color themes** (Dracula, Nord, Gruvbox, Tokyo Night, Solarized, and more) plus a live **custom-theme editor** for the background, foreground, cursor and all 16 ANSI colors.
 
