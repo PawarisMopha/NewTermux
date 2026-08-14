@@ -44,11 +44,12 @@ jobs:
           # We use the -i flag to avoid building everything from source if possible, 
           # but since we changed the package name, it will likely build from source anyway.
           # However, generate-bootstraps.sh is the "Correct" entry point.
-          chmod -R 777 .
+          sudo chmod -R 777 .
           
           # We need to use the docker image to ensure a consistent environment.
-          sudo CONTAINER_USER=root ./scripts/run-docker.sh ./scripts/generate-bootstraps.sh --architectures ${{ github.event.inputs.arch }}
+          ./scripts/run-docker.sh ./scripts/generate-bootstraps.sh --architectures ${{ github.event.inputs.arch }}
           sudo chown -R $USER:$USER .
+          sudo chmod -R 777 .
           
       - name: Upload Bootstrap
         uses: actions/upload-artifact@v7
