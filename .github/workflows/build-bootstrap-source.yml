@@ -44,6 +44,7 @@ jobs:
           
           # We need to use the docker image to ensure a consistent environment.
           ./scripts/run-docker.sh ./scripts/generate-bootstraps.sh --architectures ${{ github.event.inputs.arch }}
+          sudo chown -R $USER:$USER .
           
       - name: Upload Bootstrap
         uses: actions/upload-artifact@v7
