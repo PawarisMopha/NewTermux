@@ -1,6 +1,9 @@
 name: Build NewTermux Bootstrap from Source
 
 on:
+  pull_request:
+    branches:
+    - main
   workflow_dispatch:
     inputs:
       arch:
@@ -44,7 +47,7 @@ jobs:
           chmod -R 777 .
           
           # We need to use the docker image to ensure a consistent environment.
-          sudo ./scripts/run-docker.sh ./scripts/generate-bootstraps.sh --architectures ${{ github.event.inputs.arch }}
+          sudo CONTAINER_USER=root ./scripts/run-docker.sh ./scripts/generate-bootstraps.sh --architectures ${{ github.event.inputs.arch }}
           sudo chown -R $USER:$USER .
           
       - name: Upload Bootstrap
