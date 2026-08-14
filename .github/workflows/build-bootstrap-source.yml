@@ -44,7 +44,7 @@ jobs:
           chmod -R 777 .
           
           # We need to use the docker image to ensure a consistent environment.
-          ./scripts/run-docker.sh ./scripts/generate-bootstraps.sh --architectures ${{ github.event.inputs.arch }}
+          sudo ./scripts/run-docker.sh ./scripts/generate-bootstraps.sh --architectures ${{ github.event.inputs.arch }}
           sudo chown -R $USER:$USER .
           
       - name: Upload Bootstrap
